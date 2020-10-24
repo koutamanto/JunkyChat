@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 from flask import Flask,request,render_template,redirect,url_for
 import time,json
 
-
 app = Flask(__name__)
 
 @app.route("/")
