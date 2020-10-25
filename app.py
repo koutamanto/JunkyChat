@@ -14,7 +14,6 @@ def index():
 
 @app.route("/view")
 def view():
-    datas = {"datas":datas_list}
     with open("data.json","r") as f:
         view_data = json.load(f)
     print(view_data)
@@ -22,10 +21,10 @@ def view():
 
 @app.route("/send",methods=["POST"])
 def send():
-    datas = {"datas":datas_list}
     sended_data = request.get_data().decode()
     print(sended_data)
     datas["datas"].append(sended_data)
+    datas = {"datas":datas_list}
     with open("data.json","w") as f:
         json.dump(datas, f, indent=4)
     return "[success:]" + sended_data + "sent"
