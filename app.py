@@ -25,6 +25,7 @@ def send():
     print(sended_data)
     datas["datas"].append(sended_data)
     datas = {"datas":datas_list}
+    print(datas)
     with open("data.json","w") as f:
         json.dump(datas, f, indent=4)
     return "[success:]" + sended_data + "sent"
