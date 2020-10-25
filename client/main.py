@@ -15,9 +15,10 @@ def send(entry_v):
     res = requests.post('https://junkychat.herokuapp.com/send',data=data)
 def view(event):
     msgs = requests.get("https://junkychat.herokuapp.com/view").text
+    msgs = msgs["datas"]
     print(msgs)
     for msg in msgs:
-        label["text"] = label["text"] + "\n" + msg
+        label["text"] = label["text"] + "\n" + msg["msg"]
 window = tkinter.Tk()
 
 window.geometry("400x300")

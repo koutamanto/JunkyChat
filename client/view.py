@@ -5,5 +5,7 @@ while True:
     time.sleep(3)
     msg = requests.get('https://junkychat.herokuapp.com/view').text
     if msg != b_msg:
-        print(json.loads(msg)["msg"])
+        for data in json.loads(msg)["datas"]:
+            data["msg"]
+        print()
     b_msg = msg
