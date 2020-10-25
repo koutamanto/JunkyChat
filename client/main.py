@@ -15,7 +15,8 @@ def send(entry_v):
     res = requests.post('https://junkychat.herokuapp.com/send',data=data)
 def view(event):
     msgs = requests.get("https://junkychat.herokuapp.com/view").text
-    msgs = msgs["datas"]
+    print(msgs)
+    msgs = json.loads(msgs)["datas"]
     print(msgs)
     for msg in msgs:
         label["text"] = label["text"] + "\n" + msg["msg"]
