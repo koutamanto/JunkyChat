@@ -16,7 +16,7 @@ def view():
         view_data = json.load(f)
     print(view_data)
     return view_data
-@app.route("/send",method=["POST"])
+@app.route("/send",methods=["POST"])
 def send():
     sended_data = request.get_data()
     print(sended_data)
