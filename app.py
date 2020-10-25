@@ -18,7 +18,7 @@ def view():
     return view_data
 @app.route("/send",methods=["POST"])
 def send():
-    sended_data = request.get_data()
+    sended_data = request.get_data().decode()
     print(sended_data)
     with open("data.json","w") as f:
         json.dump(sended_data, f, indent=4)
