@@ -23,7 +23,7 @@ def view():
 def send():
     sended_data = request.get_data().decode()
     print(sended_data)
-    datas["datas"].append(sended_data)
+    datas_list.append(sended_data)
     datas = {"datas":datas_list}
     print(datas)
     with open("data.json","w") as f:
