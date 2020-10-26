@@ -15,7 +15,8 @@ def index():
 
 @app.route("/create", methods=["POST"])
 def create():
-    roomname = request.get_data().decode()
+    roomname = request.get_data()
+    roomname = roomname["roomname"]
     datas[roomname] = {"datas":[]}
     print(datas)
     with open("data.json","w") as f:
