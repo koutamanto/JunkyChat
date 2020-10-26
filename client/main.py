@@ -22,7 +22,6 @@ class Test(QtWidgets.QMainWindow):
     roomname = self.ui.CreateTalkRoomForm.text()
     res = requests.post("http://junkychat.herokuapp.com/create").text
     print(res)
-    print(res.text)
     self.view()
   def send(self):
     msg = self.ui.MessageForm.toPlainText()

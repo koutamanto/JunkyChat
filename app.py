@@ -17,6 +17,7 @@ def index():
 def create():
     roomname = request.get_data()
     datas[roomname] = {"datas":[]}
+    print(datas)
     return roomname
 @app.route("/view")
 def view():
