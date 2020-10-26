@@ -36,7 +36,7 @@ class Test(QtWidgets.QMainWindow):
   def onItemClicked(self, it, col):
     self.selectedroomname = it.text(col)
     print(self.selectedroomname)
-    view()
+    self.view()
   def view(self):
     roomid = 0
     msg_list = []

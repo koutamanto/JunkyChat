@@ -27,7 +27,7 @@ def view():
     with open("data.json","r") as f:
         view_data = json.load(f)
     print(view_data[selectedroomname]["datas"])
-    return str(view_data[selectedroomname])
+    return str(view_data[selectedroomname]["datas"])
 
 @app.route("/send",methods=["POST"])
 def send():
