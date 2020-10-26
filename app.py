@@ -6,6 +6,7 @@ import time,json
 
 datas_list = []
 rooms_list = []
+datas = {}
 app = Flask(__name__)
 
 @app.route("/")

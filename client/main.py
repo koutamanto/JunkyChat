@@ -17,8 +17,9 @@ class Test(QtWidgets.QMainWindow):
     timer = QtCore.QTimer()
     timer.timeout.connect(self.view)
     timer.start(3000)
+    self.ui.CreateTalkRoom.clicked.connect(self.createtalkrooms)
   def createtalkrooms(self):
-    roomname = self.ui.CreateTalkRoomForm.toPlainText()
+    roomname = self.ui.CreateTalkRoomForm.text()
     res = requests.post("http://junkychat.herokuapp.com/create").text
     print(res)
     print(res.text)
