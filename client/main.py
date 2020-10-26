@@ -20,7 +20,7 @@ class Test(QtWidgets.QMainWindow):
     self.ui.CreateTalkRoom.clicked.connect(self.createtalkrooms)
   def createtalkrooms(self):
     roomname = self.ui.CreateTalkRoomForm.text()
-    res = requests.post("http://junkychat.herokuapp.com/create").text
+    res = requests.post("http://junkychat.herokuapp.com/create", data=roomname).text
     print(res)
     self.view()
   def send(self):
