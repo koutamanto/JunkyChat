@@ -16,7 +16,7 @@ def index():
 @app.route("/create", methods=["POST"])
 def create():
     roomname = request.get_data()
-    datas.append({roomname:{"datas":[]}})
+    datas[roomname] = {"datas":[]}}
     return roomname
 @app.route("/view")
 def view():
