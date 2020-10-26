@@ -16,7 +16,7 @@ def index():
 @app.route("/create", methods=["POST"])
 def create():
     roomname = request.args.get("roomname")
-    datas[roomname] = {"datas":[]}
+    datas[roomname] = {"datas":[{"msg":"This is a new room!Enjoy!"}]}
     print(datas)
     with open("data.json","w") as f:
         json.dump(datas, f, indent=4)
