@@ -21,6 +21,12 @@ def create():
     with open("data.json","w") as f:
         json.dump(datas, f, indent=4)
     return roomname
+@app.route("/rooms")
+def rooms():
+    with open("data.json","r") as f:
+        rooms_data = json.load(f)
+    return str(rooms_data)
+
 @app.route("/view")
 def view():
     selectedroomname = request.args.get("selectedroomname")

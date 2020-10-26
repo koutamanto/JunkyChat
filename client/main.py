@@ -36,7 +36,13 @@ class Test(QtWidgets.QMainWindow):
   def onItemClicked(self, it, col):
     self.selectedroomname = it.text(col)
     print(self.selectedroomname)
+    self.rooms()
     self.view()
+  def rooms(self):
+    rooms = requests.get("https://junkychat.herokuapp.com/rooms",params={"selectedroomname":self.selectedroomname}).text#リストでreturn
+    roomitems = QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)
+    for room in eval(rooms):
+      roomitems.addChild(tr(room))
   def view(self):
     roomid = 0
     msg_list = []
@@ -49,10 +55,6 @@ class Test(QtWidgets.QMainWindow):
       ret_msg = ret_msg + "\n" + msg["msg"]
     print(ret_msg)
     self.ui.MessageLogs.setText(ret_msg)
-    rooms = requests.get("https://junkychat.herokuapp.com/rooms",params={"selectedroomname":self.selectedroomname}).text#リストでreturn
-    roomitems = QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)
-    for room in eval(rooms):
-      roomitems.addChild(tr(room))
 if __name__ == '__main__':
   app = QtWidgets.QApplication(sys.argv)
   window = Test()
