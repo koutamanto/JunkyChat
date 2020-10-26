@@ -18,6 +18,8 @@ def create():
     roomname = request.get_data().decode()
     datas[roomname] = {"datas":[]}
     print(datas)
+    with open("data.json","w") as f:
+        json.dump(datas, f, indent=4)
     return roomname
 @app.route("/view")
 def view():
