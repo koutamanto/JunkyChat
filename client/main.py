@@ -40,7 +40,7 @@ class Test(QtWidgets.QMainWindow):
     roomid = 0
     msg_list = []
     ret_msg = ""
-    msgs = requests.get("https://junkychat.herokuapp.com/view").text
+    msgs = requests.get("https://junkychat.herokuapp.com/view", params={"selectedroomname":self.selectedroomname}).text
     msgs = eval(msgs)["datas"]
     print(msgs)
     for msg in msgs:
