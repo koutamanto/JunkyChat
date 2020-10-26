@@ -24,7 +24,7 @@ def create():
     return roomname
 @app.route("/view")
 def view():
-    selectedroomname = request.args.get('selectedroomname', '')
+    selectedroomname = request.args.get('selectedroomname', '').decode()
     with open("data.json","r") as f:
         view_data = json.load(f)
     print(view_data[selectedroomname]["datas"])
@@ -32,7 +32,7 @@ def view():
 
 @app.route("/send",methods=["POST"])
 def send():
-    sended_data = request.args.get('roomname', '')
+    sended_data = request.args.get('roomname', '').decode()
     print(sended_data)
     datas_list.append(sended_data)
     datas[sended_data["roomname"]]["datas"] = datas_list
