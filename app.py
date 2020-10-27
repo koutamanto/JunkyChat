@@ -37,8 +37,8 @@ def view():
 
 @app.route("/send",methods=["POST"])
 def send():
-    msg = request.get_json()["msg"]
-    roomname = request.get_json()["roomname"]
+    msg = json.loads(request.get_json())["msg"]
+    roomname = json.loads(request.get_json())["roomname"]
     datas_list.append(msg)
     datas[roomname]["datas"] = datas_list
     print(datas)

@@ -30,8 +30,8 @@ class Test(QtWidgets.QMainWindow):
     send_date = datetime.now()
     roomname = self.selectedroomname
     print(roomname)
-    data = {"msg":"["+str(send_date)+"] "+"["+str(user_name)+":] "+str(msg),"roomname":roomname}
-    res = requests.post('https://junkychat.herokuapp.com/send',data=data)
+    data = json.dumps({"msg":"["+str(send_date)+"] "+"["+str(user_name)+":] "+str(msg),"roomname":roomname})
+    res = requests.post('https://junkychat.herokuapp.com/send',json=data)
     self.view()
   @QtCore.pyqtSlot(QtWidgets.QTreeWidgetItem, int)
   def onItemClicked(self, it, col):
