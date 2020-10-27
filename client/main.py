@@ -47,12 +47,9 @@ class Test(QtWidgets.QMainWindow):
     print(type(rooms))
     for room in rooms:
       print("room: " + room)
-      roomi = QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)
-      self.roomitems.append(roomi.setText(roomid, room))
-      roomid = roomid + 1
-    print(self.roomitems)
-    self.ui.roomitem = QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)
-    self.ui.roomitem.addChildren(self.roomitems)
+      exec("self.roomi" + str(roomid) + "=QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)")
+      exec("self.roomi"+str(roomid)+".setText(roomid, room)")
+      roomid = int(roomid) + 1
   def view(self):
     self.rooms()
     msg_list = []
