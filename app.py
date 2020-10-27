@@ -1,7 +1,7 @@
 # coding: utf-8
 import requests
 from bs4 import BeautifulSoup
-from flask import Flask,request,render_template,redirect,url_for
+from flask import Flask,request,render_template,redirect,url_for,jsonify
 import time,json
 
 datas_list = []
@@ -25,7 +25,7 @@ def create():
 def rooms():
     with open("data.json","r") as f:
         rooms_data = json.load(f)
-    return str(rooms_data)
+    return jsonify(rooms_data)
 
 @app.route("/view")
 def view():

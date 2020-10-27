@@ -39,14 +39,20 @@ class Test(QtWidgets.QMainWindow):
     print(self.selectedroomname)
     self.view()
   def rooms(self):
+    self.roomitems = []
     roomid = 0
     rooms = requests.get("https://junkychat.herokuapp.com/rooms").text#リストでreturn
-    for room in eval(rooms):
-      self.ui.roomitems = QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)
-      roomitem = QtWidgets.QTreeWidgetItem(self.ui.roomitems)
-      roomitem.setText(roomid, room)
-      self.ui.roomitems = roomitem
+    rooms = eval(rooms)
+    print(rooms)
+    print(type(rooms))
+    for room in rooms:
+      print("room: " + room)
+      roomi = QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)
+      self.roomitems.append(roomi.setText(roomid, room))
       roomid = roomid + 1
+    print(self.roomitems)
+    self.ui.roomitem = QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)
+    self.ui.roomitem.addChildren(self.roomitems)
   def view(self):
     self.rooms()
     msg_list = []
