@@ -51,7 +51,6 @@ class Test(QtWidgets.QMainWindow):
       exec("self.roomi"+str(roomid)+".setText(roomid, room)")
       roomid = int(roomid) + 1
   def view(self):
-    self.rooms()
     msg_list = []
     ret_msg = ""
     msgs = requests.get("https://junkychat.herokuapp.com/view", params={"selectedroomname":self.selectedroomname}).text
