@@ -109,11 +109,6 @@ font: 7pt &quot;Microsoft JhengHei UI&quot;;</string>
        <string/>
       </property>
      </column>
-     <item>
-      <property name="text">
-       <string>ロビー</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">

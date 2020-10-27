@@ -25,7 +25,7 @@ def create():
 def rooms():
     with open("data.json","r") as f:
         rooms_data = json.load(f)
-    return jsonify(rooms_data)
+    return jsonify(rooms_data.keys())
 
 @app.route("/view")
 def view():

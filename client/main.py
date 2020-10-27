@@ -17,6 +17,7 @@ class Test(QtWidgets.QMainWindow):
     timer = QtCore.QTimer()
     timer.timeout.connect(self.view)
     timer.start(3000)
+    self.rooms()
     self.ui.CreateTalkRoom.clicked.connect(self.createtalkrooms)
     self.ui.TalkRooms.itemClicked.connect(self.onItemClicked)
   def createtalkrooms(self):
@@ -59,7 +60,7 @@ class Test(QtWidgets.QMainWindow):
     print(msgs)
     for msg in msgs:
       print(msg)
-      ret_msg = ret_msg + "\n" + msg["msg"]
+      ret_msg = ret_msg + "\n" + str(msg)
     print(ret_msg)
     self.ui.MessageLogs.setText(ret_msg)
 if __name__ == '__main__':
