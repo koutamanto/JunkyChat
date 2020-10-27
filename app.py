@@ -39,7 +39,6 @@ def view():
 def send():
     msg = request.args.get("msg")
     roomname = request.args.get("roomname")
-    print("msg:" + msg)
     datas_list.append(msg)
     datas[roomname]["datas"] = datas_list
     print(datas)
