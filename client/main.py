@@ -23,23 +23,24 @@ class Test(QtWidgets.QMainWindow):
     roomname = self.ui.CreateTalkRoomForm.text()
     res = requests.post("http://junkychat.herokuapp.com/create", params={"roomname":roomname}).text
     print(res)
+    self.rooms()
   def send(self):
     msg = self.ui.MessageForm.toPlainText()
     print(msg)
     send_date = datetime.now()
     roomname = self.selectedroomname
-    data = json.dumps({{"msg":"["+str(send_date)+"] "+"["+user_name+":] "+msg},{"roomname":roomname}})
+    print(roomname)
+    data = {"msg":"["+str(send_date)+"] "+"["+str(user_name)+":] "+str(msg),"roomname":roomname}
     res = requests.post('https://junkychat.herokuapp.com/send',data=data)
     self.view()
   @QtCore.pyqtSlot(QtWidgets.QTreeWidgetItem, int)
   def onItemClicked(self, it, col):
     self.selectedroomname = it.text(col)
     print(self.selectedroomname)
-    self.rooms()
     self.view()
   def rooms(self):
     roomid = 0
-    rooms = requests.get("https://junkychat.herokuapp.com/rooms",params={"selectedroomname":self.selectedroomname}).text#リストでreturn
+    rooms = requests.get("https://junkychat.herokuapp.com/rooms").text#リストでreturn
     for room in eval(rooms):
       self.ui.roomitems = QtWidgets.QTreeWidgetItem(self.ui.TalkRooms)
       roomitem = QtWidgets.QTreeWidgetItem(self.ui.roomitems)
@@ -47,6 +48,7 @@ class Test(QtWidgets.QMainWindow):
       self.ui.roomitems = roomitem
       roomid = roomid + 1
   def view(self):
+    self.rooms()
     msg_list = []
     ret_msg = ""
     msgs = requests.get("https://junkychat.herokuapp.com/view", params={"selectedroomname":self.selectedroomname}).text

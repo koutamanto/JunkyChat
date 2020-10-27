@@ -29,7 +29,7 @@ def rooms():
 
 @app.route("/view")
 def view():
-    selectedroomname = request.args.get("selectedroomname")
+    selectedroomname = request.args.get('selectedroomname','')
     with open("data.json","r") as f:
         view_data = json.load(f)
     print(view_data[selectedroomname]["datas"])
