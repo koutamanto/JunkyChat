@@ -37,12 +37,11 @@ def view():
 
 @app.route("/send",methods=["POST"])
 def send():
-    sended_data = request.args.get()
-    sended_data = eval(sended_data)
-    print(sended_data)
-    msg = sended_data["msg"]
+    msg = request.args.get("msg")
+    roomname = request.args.get("roomname")
+    print("msg:" + msg)
     datas_list.append(msg)
-    datas[sended_data["roomname"]]["datas"] = datas_list
+    datas[roomname]["datas"] = datas_list
     print(datas)
     with open("data.json","w") as f:
         json.dump(datas, f, indent=4)
