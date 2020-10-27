@@ -40,7 +40,8 @@ def send():
     sended_data = request.args.get()
     sended_data = eval(sended_data)
     print(sended_data)
-    datas_list.append(sended_data)
+    msg = sended_data["msg"]
+    datas_list.append(msg)
     datas[sended_data["roomname"]]["datas"] = datas_list
     print(datas)
     with open("data.json","w") as f:
