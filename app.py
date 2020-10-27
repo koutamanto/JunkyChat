@@ -44,7 +44,7 @@ def send():
     print(datas)
     with open("data.json","w") as f:
         json.dump(datas, f, indent=4)
-    return "[success:]" + sended_data + "sent"
+    return "[success:]" + msg + "sent"
 
 if __name__ == "__main__":
     app.run(debug=True)
